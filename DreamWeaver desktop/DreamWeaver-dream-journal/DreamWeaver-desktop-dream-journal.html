@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamWeaver - Dream Journal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="DreamWeaver-dream-journal.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- New Dream Modal -->
+        <div class="dream-modal" id="dreamModal">
+            <div class="modal-container">
+                <div class="modal-header">
+                    <h2>Record New Dream</h2>
+                    <div class="modal-close" id="closeModal">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group">
+                        <label class="input-label">Dream Description</label>
+                        <textarea class="dream-input" placeholder="Describe your dream in detail..."></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label class="input-label">Emotions</label>
+                        <div class="tag-selector">
+                            <div class="tag-option selected" style="background: rgba(255, 209, 102, 0.2); color: var(--happy);">
+                                <i class="fas fa-smile"></i> Happy
+                            </div>
+                            <div class="tag-option" style="background: rgba(17, 138, 178, 0.2); color: var(--sad);">
+                                <i class="fas fa-sad-tear"></i> Sad
+                            </div>
+                            <div class="tag-option" style="background: rgba(239, 71, 111, 0.2); color: var(--scared);">
+                                <i class="fas fa-surprise"></i> Scared
+                            </div>
+                            <div class="tag-option" style="background: rgba(6, 214, 160, 0.2); color: var(--confused);">
+                                <i class="fas fa-question"></i> Confused
+                            </div>
+                            <div class="tag-option" style="background: rgba(138, 137, 192, 0.2); color: var(--calm);">
+                                <i class="fas fa-spa"></i> Calm
+                            </div>
+                            <div class="tag-option" style="background: rgba(160, 81, 149, 0.2); color: var(--creative);">
+                                <i class="fas fa-palette"></i> Creative
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label class="input-label">Tags & Themes</label>
+                        <div class="tag-selector">
+                            <div class="tag-option" style="background: rgba(106, 90, 205, 0.2); color: var(--primary);">
+                                Flying
+                            </div>
+                            <div class="tag-option" style="background: rgba(106, 90, 205, 0.2); color: var(--primary);">
+                                Water
+                            </div>
+                            <div class="tag-option" style="background: rgba(106, 90, 205, 0.2); color: var(--primary);">
+                                Animals
+                            </div>
+                            <div class="tag-option" style="background: rgba(106, 90, 205, 0.2); color: var(--primary);">
+                                Chase
+                            </div>
+                            <div class="tag-option" style="background: rgba(106, 90, 205, 0.2); color: var(--primary);">
+                                Falling
+                            </div>
+                            <div class="tag-option" style="background: rgba(106, 90, 205, 0.2); color: var(--primary);">
+                                School
+                            </div>
+                            <div class="tag-option" style="background: rgba(106, 90, 205, 0.2); color: var(--primary);">
+                                <i class="fas fa-plus"></i> Add New
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label class="input-label">Additional Notes</label>
+                        <textarea class="dream-input" placeholder="Any special notes about this dream..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-btn btn-secondary">
+                        <i class="fas fa-microphone"></i> Voice Record
+                    </button>
+                    <button class="modal-btn btn-primary">
+                        <i class="fas fa-save"></i> Save Dream
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="logo-text">DreamWeaver</div>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar">U</div>
+                <div>
+                    <div>User Name</div>
+                    <div style="font-size: 13px; color: var(--text-secondary);">Last Dream Record: Today 7:30 AM</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <div class="nav">
+            <a class="nav-item" href="../DreamWeaver-home/DreamWeaver-home.html"><i class="fas fa-home"></i></a>
+            <a class="nav-item active" href="DreamWeaver-desktop-dream-journal.html">Dream Journal</a>
+            <a class="nav-item" href="../DreamWeaver-health-monitor/DreamWeaver-desktop-health-monitor.html">Health Monitor</a>
+            <a class="nav-item" href="../DreamWeaver-setting/DreamWeaver-desktop-setting.html">Settings</a>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <h2>Dream Calendar</h2>
+                </div>
+                
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <div class="calendar-title"id="calendarTitle">Loading...</div>
+                        <div class="calendar-nav">
+                           <div class="calendar-btn" id="prevMonth">
+			   <i class="fas fa-chevron-left"></i>
+			   </div>
+    			   <div class="calendar-btn" id="nextMonth">
+			   <i class="fas fa-chevron-right"></i>
+			   </div>
+                        </div>
+                     </div>
+                    
+                   <div class="calendar-grid" id="calendarGrid">
+    		   	<div class="calendar-day-header">Sun</div>
+    		   	<div class="calendar-day-header">Mon</div>
+    		   	<div class="calendar-day-header">Tue</div>
+    		   	<div class="calendar-day-header">Wed</div>
+    		   	<div class="calendar-day-header">Thu</div>
+    		   	<div class="calendar-day-header">Fri</div>
+    		   	<div class="calendar-day-header">Sat</div>
+  		   </div>
+	       </div>
+                
+                <div class="dream-filters">
+                    <div class="filter-header">Filter Dreams</div>
+                    
+                    <div class="filter-group">
+                        <div class="filter-title">Emotions</div>
+                        <div class="filter-tags">
+                            <div class="filter-tag active">All</div>
+                            <div class="filter-tag">
+                                <i class="fas fa-smile" style="color: var(--happy);"></i> Happy
+                            </div>
+                            <div class="filter-tag">
+                                <i class="fas fa-sad-tear" style="color: var(--sad);"></i> Sad
+                            </div>
+                            <div class="filter-tag">
+                                <i class="fas fa-surprise" style="color: var(--scared);"></i> Scared
+                            </div>
+                            <div class="filter-tag">
+                                <i class="fas fa-question" style="color: var(--confused);"></i> Confused
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <div class="filter-title">Themes</div>
+                        <div class="filter-tags">
+                            <div class="filter-tag active">All</div>
+                            <div class="filter-tag">Flying</div>
+                            <div class="filter-tag">Water</div>
+                            <div class="filter-tag">Animals</div>
+                            <div class="filter-tag">Chase</div>
+                            <div class="filter-tag">Falling</div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <div class="filter-title">Other</div>
+                        <div class="filter-tags">
+                            <div class="filter-tag">Lucid</div>
+                            <div class="filter-tag">Recurring</div>
+                            <div class="filter-tag">Nightmare</div>
+                            <div class="filter-tag">Vivid</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Journal Content -->
+            <div class="journal-content">
+                <div class="journal-header">
+                    <h1>Dream Journal</h1>
+                    <div class="journal-actions">
+                        <div class="journal-btn secondary">
+                            <i class="fas fa-filter"></i> Filter
+                        </div>
+                        <div class="journal-btn" id="newDreamBtn">
+                            <i class="fas fa-plus"></i> New Dream
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dream-entries">
+                    <div class="dream-entry">
+                        <div class="dream-entry-header">
+                            <div class="dream-date">Today, July 18</div>
+                            <div class="dream-time">Recorded at 6:30 AM</div>
+                        </div>
+                        <div class="dream-content">
+                            I was flying over mountains and could feel the wind on my face. The view was breathtaking with snow-capped peaks and colorful birds flying alongside me. Suddenly, I started descending rapidly towards a crystal-clear lake. Just before hitting the water, I woke up with my heart racing.
+                        </div>
+                        <div class="dream-tags">
+                            <div class="dream-tag tag-emotion">
+                                <i class="fas fa-smile"></i> Happy
+                            </div>
+                            <div class="dream-tag tag-emotion">
+                                <i class="fas fa-surprise"></i> Scared
+                            </div>
+                            <div class="dream-tag tag-theme">
+                                <i class="fas fa-feather-alt"></i> Flying
+                            </div>
+                            <div class="dream-tag tag-symbol">
+                                <i class="fas fa-mountain"></i> Mountains
+                            </div>
+                            <div class="dream-tag tag-symbol">
+                                <i class="fas fa-water"></i> Water
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dream-entry">
+                        <div class="dream-entry-header">
+                            <div class="dream-date">July 15</div>
+                            <div class="dream-time">Recorded at 5:45 AM</div>
+                        </div>
+                        <div class="dream-content">
+                            Found myself in a crowded marketplace where animals were selling human clothes. A talking bear offered me a hat made of clouds. When I put it on, I started floating above the market. People were pointing and laughing. A monkey in a business suit tried to sell me "gravity insurance" before I woke up.
+                        </div>
+                        <div class="dream-tags">
+                            <div class="dream-tag tag-emotion">
+                                <i class="fas fa-question"></i> Confused
+                            </div>
+                            <div class="dream-tag tag-theme">
+                                <i class="fas fa-paw"></i> Animals
+                            </div>
+                            <div class="dream-tag tag-theme">
+                                <i class="fas fa-store"></i> Market
+                            </div>
+                            <div class="dream-tag tag-lucid">
+                                <i class="fas fa-star"></i> Lucid
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dream-entry">
+                        <div class="dream-entry-header">
+                            <div class="dream-date">July 12</div>
+                            <div class="dream-time">Recorded at 3:20 AM</div>
+                        </div>
+                        <div class="dream-content">
+                            I was back in my childhood home, but all the rooms were rearranged. My old dog was there, but he could talk and gave me advice about my current work project. He said I needed to "think outside the doghouse" and then transformed into my first boss. The walls started melting into rainbow colors as I heard distant piano music.
+                        </div>
+                        <div class="dream-tags">
+                            <div class="dream-tag tag-emotion">
+                                <i class="fas fa-spa"></i> Calm
+                            </div>
+                            <div class="dream-tag tag-emotion">
+                                <i class="fas fa-sad-tear"></i> Sad
+                            </div>
+                            <div class="dream-tag tag-theme">
+                                <i class="fas fa-home"></i> Childhood
+                            </div>
+                            <div class="dream-tag tag-symbol">
+                                <i class="fas fa-dog"></i> Dog
+                            </div>
+                            <div class="dream-tag tag-recurring">
+                                <i class="fas fa-redo"></i> Recurring
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="DreamWeaver-dream-journal(2).js"></script>
+</body>
+</html>

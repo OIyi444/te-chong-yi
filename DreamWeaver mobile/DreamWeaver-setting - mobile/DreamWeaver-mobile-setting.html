@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamWeaver - Settings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="DreamWeaver-setting.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="logo-text">DreamWeaver</div>
+            </div>
+            <div class="user-avatar">U</div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Profile Settings Section -->
+            <div class="settings-section">
+                <div class="section-header">
+                    <h2>Profile Settings</h2>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-user-circle"></i>
+                            <span>First Name</span>
+                        </div>
+                        <input type="text" class="setting-input" value="John">
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Last Name</span>
+                        </div>
+                        <input type="text" class="setting-input" value="Doe">
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email</span>
+                        </div>
+                        <input type="email" class="setting-input" value="john.doe@example.com">
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <i class="fas fa-user"></i>
+                            <span>Username</span>
+                        </div>
+                        <input type="text" class="setting-input" value="john_doe">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Theme Settings -->
+            <div class="settings-section">
+                <div class="section-header">
+                    <h2>Theme Settings</h2>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <i class="fas fa-moon"></i>
+                        <span>Dark Mode</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Notification Settings -->
+            <div class="settings-section">
+                <div class="section-header">
+                    <h2>Notifications</h2>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <i class="fas fa-bell"></i>
+                        <span>Enable Notifications</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <i class="fas fa-volume-up"></i>
+                        <span>Notification Sound</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Emergency Contacts -->
+            <div class="settings-section">
+                <div class="section-header">
+                    <h2>Emergency Contacts</h2>
+                </div>
+
+                <div class="form-row">
+                    <input type="text" class="setting-input" placeholder="Contact Name">
+                    <input type="text" class="setting-input" placeholder="Phone Number">
+                    <button class="btn-primary">
+                        <i class="fas fa-plus"></i> Add
+                    </button>
+                </div>
+
+                <div class="contacts-list">
+                    <div class="contact-item">
+                        <div class="contact-info">
+                            <div class="contact-name">Jane Smith</div>
+                            <div class="contact-number">+1 (555) 123-4567</div>
+                        </div>
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="mobile-nav">
+            <a class="nav-item" href="../DreamWeaver-home - mobile/DreamWeaver-home.html">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a class="nav-item" href="../DreamWeaver-journal-mobile/DreamWeaver-mobile-dream-journal.html">
+                <i class="fas fa-book"></i>
+                <span>Journal</span>
+            </a>
+            <a class="nav-item" href="../DreamWeaver-health-monitor-mobile/DreamWeaver-mobile-health-monitor.html">
+                <i class="fas fa-heartbeat"></i>
+                <span>Health</span>
+            </a>
+            <a class="nav-item active" href="DreamWeaver-mobile-setting.html">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="DreamWeaver-setting.js"></script>
+</body>
+</html>

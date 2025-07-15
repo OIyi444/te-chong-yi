@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamWeaver - Health Monitoring System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <link rel="stylesheet" href="DreamWeaver-health-monitor.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Alert Modal -->
+        <div class="alert-modal" id="alertModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h2>Health Alert Triggered!</h2>
+                </div>
+                <div class="modal-body">
+                    <p style="margin-bottom: 20px;">Abnormal physiological patterns detected during sleep. Immediate attention recommended.</p>
+                    
+                    <div class="alert-metric">
+                        <div class="metric-details">
+                            <div class="metric-name">Heart Rate</div>
+                            <div class="metric-status">Critical: Above 120bpm for 5+ minutes</div>
+                        </div>
+                        <div class="metric-value-large">128 bpm</div>
+                    </div>
+                    
+                    <div class="alert-metric">
+                        <div class="metric-details">
+                            <div class="metric-name">Breathing Rate</div>
+                            <div class="metric-status">Warning: Below normal range</div>
+                        </div>
+                        <div class="metric-value-large">9 bpm</div>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <div class="modal-btn btn-primary">
+                            <i class="fas fa-bell"></i> Notify Emergency Contact
+                        </div>
+                        <div class="modal-btn btn-secondary" id="dismissAlert">
+                            <i class="fas fa-times"></i> Dismiss
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="logo-text">DreamWeaver</div>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar">U</div>
+                <div>
+                    <div>User Name</div>
+                    <div style="font-size: 13px; color: var(--text-secondary);">Last Sync: Today 07:30 AM</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <div class="nav">
+            <a class="nav-item" href="../DreamWeaver-home/DreamWeaver-home.html"><i class="fas fa-home"></i></a>
+            <a class="nav-item" href="../DreamWeaver-dream-journal/DreamWeaver-desktop-dream-journal.html">Dream Journal</a>
+            <a class="nav-item active" href="DreamWeaver-desktop-health-monitor.html">Health Monitor</a>
+            <a class="nav-item" href="../DreamWeaver-setting/DreamWeaver-desktop-setting.html">Settings</a>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Health Monitoring Panel -->
+            <div class="health-panel">
+                <div class="panel-header">
+                    <h2>Real-time Monitoring</h2>
+                    <div class="status-indicator">
+                        <div class="status-dot status-normal"></div>
+                        <span>Normal</span>
+                    </div>
+                </div>
+                
+                <div class="health-card">
+                    <div class="metric-header">
+                        <div class="metric-title">
+                            <div class="metric-icon heart-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <span>Heart Rate</span>
+                        </div>
+                        <div class="status-indicator">
+                            <div class="status-dot status-normal"></div>
+                            <span>Normal</span>
+                        </div>
+                    </div>
+                    <div class="metric-value">72 bpm</div>
+                    <div class="metric-subtitle">Current heart rate</div>
+                    
+                    <div class="threshold-info">
+                        <div class="threshold-row">
+                            <span class="threshold-label">Normal Range</span>
+                            <span class="threshold-value">60-100 bpm</span>
+                        </div>
+                        <div class="threshold-row">
+                            <span class="threshold-label">Warning Threshold</span>
+                            <span class="threshold-value">>110 bpm</span>
+                        </div>
+                        <div class="threshold-row">
+                            <span class="threshold-label">Critical Threshold</span>
+                            <span class="threshold-value">>120 bpm (5min)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="health-card">
+                    <div class="metric-header">
+                        <div class="metric-title">
+                            <div class="metric-icon breath-icon">
+                                <i class="fas fa-wind"></i>
+                            </div>
+                            <span>Breathing Rate</span>
+                        </div>
+                        <div class="status-indicator">
+                            <div class="status-dot status-normal"></div>
+                            <span>Normal</span>
+                        </div>
+                    </div>
+                    <div class="metric-value">16 rpm</div>
+                    <div class="metric-subtitle">Breaths per minute</div>
+                    
+                    <div class="threshold-info">
+                        <div class="threshold-row">
+                            <span class="threshold-label">Normal Range</span>
+                            <span class="threshold-value">12-20 rpm</span>
+                        </div>
+                        <div class="threshold-row">
+                            <span class="threshold-label">Warning Threshold</span>
+                            <span class="threshold-value"><10 rpm</span>
+                        </div>
+                        <div class="threshold-row">
+                            <span class="threshold-label">Critical Threshold</span>
+                            <span class="threshold-value"><8 rpm (3min)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="health-card">
+                    <div class="metric-header">
+                        <div class="metric-title">
+                            <div class="metric-icon pulse-icon">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <span>Blood Oxygen</span>
+                        </div>
+                        <div class="status-indicator">
+                            <div class="status-dot status-normal"></div>
+                            <span>Normal</span>
+                        </div>
+                    </div>
+                    <div class="metric-value">97%</div>
+                    <div class="metric-subtitle">Oxygen saturation</div>
+                    
+                    <div class="threshold-info">
+                        <div class="threshold-row">
+                            <span class="threshold-label">Normal Range</span>
+                            <span class="threshold-value">95-100%</span>
+                        </div>
+                        <div class="threshold-row">
+                            <span class="threshold-label">Warning Threshold</span>
+                            <span class="threshold-value"><93%</span>
+                        </div>
+                        <div class="threshold-row">
+                            <span class="threshold-label">Critical Threshold</span>
+                            <span class="threshold-value"><90% (5min)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="health-card">
+                    <div class="panel-header">
+                        <h2>Alert Settings</h2>
+                    </div>
+                    
+                    <div class="alert-settings">
+                        <div class="alert-setting">
+                            <span class="alert-label">Enable Health Alerts</span>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="alert-setting">
+                            <span class="alert-label">Notify Emergency Contact</span>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="alert-setting">
+                            <span class="alert-label">Audible Alarms</span>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="alert-setting">
+                            <span class="alert-label">Vibration Alerts</span>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dashboard -->
+            <div class="dashboard">
+                <div class="dashboard-header">
+                    <h1>Sleep Health Dashboard</h1>
+                    <p>Monitor your physiological patterns during sleep. DreamWeaver tracks key health metrics and alerts you when abnormal patterns are detected.</p>
+                </div>
+                
+                <div class="charts-row">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>Heart Rate Overnight</h3>
+                            <div class="chart-actions">
+                                <div class="chart-btn">
+                                    <i class="fas fa-expand"></i>
+                                </div>
+                                <div class="chart-btn">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="heartRateChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>Breathing Pattern</h3>
+                            <div class="chart-actions">
+                                <div class="chart-btn">
+                                    <i class="fas fa-expand"></i>
+                                </div>
+                                <div class="chart-btn">
+                                    <i class="fas fa-download"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="breathChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-title">Avg. Heart Rate</div>
+                            <i class="fas fa-heartbeat" style="color: var(--heart);"></i>
+                        </div>
+                        <div class="stat-value">72 bpm</div>
+                        <div class="stat-trend">
+                            <i class="fas fa-check-circle"></i> Within normal range
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-title">Sleep Apnea Events</div>
+                            <i class="fas fa-lungs" style="color: var(--breath);"></i>
+                        </div>
+                        <div class="stat-value">2</div>
+                        <div class="stat-trend">
+                            <i class="fas fa-check-circle"></i> Normal
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-title">Stress Level</div>
+                            <i class="fas fa-brain" style="color: var(--warning);"></i>
+                        </div>
+                        <div class="stat-value">Low</div>
+                        <div class="stat-trend">
+                            <i class="fas fa-check-circle"></i> Normal
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-title">Sleep Quality</div>
+                            <i class="fas fa-bed" style="color: var(--primary);"></i>
+                        </div>
+                        <div class="stat-value">86%</div>
+                        <div class="stat-trend">
+                            <i class="fas fa-arrow-up"></i> 8% above average
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert-history">
+                    <div class="alert-header">
+                        <h3>Recent Health Alerts</h3>
+                        <div class="chart-actions">
+                             <button class="chart-btn">View All</button>
+                        </div>
+                    </div>
+                    
+                    <table class="alert-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Alert Type</th>
+                                <th>Metric</th>
+                                <th>Value</th>
+                                <th>Duration</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="alert-critical">
+                                <td>Today 03:28 AM</td>
+                                <td>
+                                    <div class="alert-type">
+                                        <div class="alert-badge badge-critical">Critical</div>
+                                    </div>
+                                </td>
+                                <td>Heart Rate</td>
+                                <td>128 bpm</td>
+                                <td>5 min 12 sec</td>
+                                <td class="alert-action">View Details</td>
+                            </tr>
+                            <tr class="alert-warning">
+                                <td>Today 02:45 AM</td>
+                                <td>
+                                    <div class="alert-type">
+                                        <div class="alert-badge badge-warning">Warning</div>
+                                    </div>
+                                </td>
+                                <td>Breathing Rate</td>
+                                <td>9 rpm</td>
+                                <td>2 min 48 sec</td>
+                                <td class="alert-action">View Details</td>
+                            </tr>
+                            <tr class="alert-warning">
+                                <td>Yesterday 04:12 AM</td>
+                                <td>
+                                    <div class="alert-type">
+                                        <div class="alert-badge badge-warning">Warning</div>
+                                    </div>
+                                </td>
+                                <td>Heart Rate</td>
+                                <td>115 bpm</td>
+                                <td>3 min 22 sec</td>
+                                <td class="alert-action">View Details</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="DreamWeaver-health-monitor.js"></script>
+
+</body>
+</html>
