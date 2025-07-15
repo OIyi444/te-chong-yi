@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamWeaver - Settings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="DreamWeaver-setting.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="logo-text">DreamWeaver</div>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar">
+                    U
+                    <div class="avatar-overlay">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                </div>
+                <div>
+                    <div>User Name</div>
+                    <div style="font-size: 13px; color: var(--text-secondary);">Premium User</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav">
+            <a class="nav-item" href="../DreamWeaver-home/DreamWeaver-home.html"><i class="fas fa-home"></i></a>
+            <a class="nav-item" href="../DreamWeaver-dream-journal/DreamWeaver-desktop-dream-journal.html">Dream Journal</a>
+            <a class="nav-item" href="../DreamWeaver-health-monitor/DreamWeaver-desktop-health-monitor.html">Health Monitor</a>
+            <a class="nav-item active" href="DreamWeaver-desktop-setting.html">Settings</a>
+        </div>
+
+        <!-- Settings Content -->
+        <div class="settings-container">
+            <!-- Settings Sidebar -->
+            <div class="settings-sidebar">
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Account Settings</div>
+                    <div class="sidebar-item active">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Profile Settings</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <i class="fas fa-lock"></i>
+                        <span>Security & Privacy</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <i class="fas fa-bell"></i>
+                        <span>Notification Preferences</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Support</div>
+                    <div class="sidebar-item">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Help Center</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <i class="fas fa-comments"></i>
+                        <span>Send Feedback</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <i class="fas fa-info-circle"></i>
+                        <span>About DreamWeaver</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Content Area -->
+            <div class="settings-content">
+                <div class="section-header">
+                    <h1>Profile Settings</h1>
+                    <p>Manage your personal information, account details, and privacy preferences</p>
+                </div>
+
+                <div class="settings-grid">
+                    <!-- Profile Card -->
+                    <div class="settings-card profile-card">
+                        <div class="card-header">
+                            <i class="fas fa-user-circle"></i>
+                            <h2>Personal Information</h2>
+                        </div>
+
+                        <div class="avatar-container">
+                            <div class="profile-avatar">
+                                U
+                                <div class="avatar-upload">
+                                    <i class="fas fa-camera"></i> Change Photo
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-column">
+                                <div class="form-group">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-input" value="John">
+                                </div>
+                            </div>
+                            <div class="form-column">
+                                <div class="form-group">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-input" value="Doe">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-input" value="john.doe@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Username</label>
+                            <input type="text" class="form-input" value="john_doe">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Date of Birth</label>
+                            <input type="date" class="form-input" value="1985-06-15">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Address</label>
+                            <textarea class="form-input" rows="3" placeholder="Enter your address"></textarea>
+                        </div>
+
+                        <div class="btn-group">
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                            <button class="btn btn-primary" id="saveProfileBtn">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Theme Settings Card -->
+                    <div class="settings-card">
+                        <div class="card-header">
+                            <i class="fas fa-palette"></i>
+                            <h2>Theme Settings</h2>
+                        </div>
+
+                        <div class="theme-toggle">
+                            <span>Dark Mode</span>
+                            <label class="switch">
+                                <input type="checkbox" id="themeToggle" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <span>Light Mode</span>
+                        </div>
+
+                        <div class="setting-description">
+                            Choose between light and dark color themes for the application
+                        </div>
+                    </div>
+
+                    <!-- Language & Region Card -->
+                    <div class="settings-card">
+                        <div class="card-header">
+                            <i class="fas fa-globe"></i>
+                            <h2>Language & Region</h2>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Language</label>
+                            <select class="form-input" id="languageSelect">
+                                <option value="en">English</option>
+                                <option value="es">Español</option>
+                                <option value="fr">Français</option>
+                                <option value="de">Deutsch</option>
+                                <option value="ja">日本語</option>
+                                <option value="zh">中文</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Region</label>
+                            <select class="form-input" id="regionSelect">
+                                <option value="us">United States</option>
+                                <option value="uk">United Kingdom</option>
+                                <option value="ca">Canada</option>
+                                <option value="au">Australia</option>
+                                <option value="eu">European Union</option>
+                                <option value="jp">Japan</option>
+                            </select>
+                        </div>
+
+                        <div class="btn-group">
+                            <button class="btn btn-primary" id="saveLanguageBtn">
+                                <i class="fas fa-save"></i> Save Preferences
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Contacts Card -->
+                    <div class="settings-card">
+                        <div class="card-header">
+                            <i class="fas fa-shield-alt"></i>
+                            <h2>Emergency Contacts</h2>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Add New Contact</label>
+                            <input type="text" class="form-input" id="contactName" placeholder="Contact Name">
+                            <input type="text" class="form-input" id="contactNumber" placeholder="Phone Number" style="margin-top: 10px;">
+                            <button class="btn btn-secondary" id="addContactBtn" style="margin-top: 10px; width: 100%;">
+                                <i class="fas fa-plus"></i> Add Contact
+                            </button>
+                        </div>
+
+                        <div class="contacts-list" id="contactsList">
+                            <!-- Contacts will be added here dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Sound & Alerts Card -->
+                    <div class="settings-card">
+                        <div class="card-header">
+                            <i class="fas fa-volume-up"></i>
+                            <h2>Sound & Alerts</h2>
+                        </div>
+
+                        <div class="sound-option">
+                            <div>
+                                <div class="setting-title">Notification Sound</div>
+                                <div class="setting-description">Play sound for notifications</div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="notificationSound" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="sound-option">
+                            <div>
+                                <div class="setting-title">Notification Volume</div>
+                                <input type="range" min="0" max="100" value="70" class="volume-control" id="notificationVolume">
+                            </div>
+                        </div>
+
+                        <div class="sound-option" style="margin-top: 20px;">
+                            <div>
+                                <div class="setting-title">Alarm Sound</div>
+                                <div class="setting-description">Play sound for alarms</div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="alarmSound" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="sound-option">
+                            <div>
+                                <div class="setting-title">Alarm Volume</div>
+                                <input type="range" min="0" max="100" value="80" class="volume-control" id="alarmVolume">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Privacy Card -->
+                    <div class="settings-card">
+                        <div class="card-header">
+                            <i class="fas fa-user-secret"></i>
+                            <h2>Privacy Settings</h2>
+                        </div>
+
+                        <div class="alert-setting">
+                            <div class="alert-label">
+                                <i class="fas fa-globe"></i>
+                                <span>Public Profile</span>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="setting-description">
+                            Allow others to view your profile and dream journal entries
+                        </div>
+
+                        <div class="alert-setting" style="margin-top: 15px;">
+                            <div class="alert-label">
+                                <i class="fas fa-search"></i>
+                                <span>Search Visibility</span>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="setting-description">
+                            Allow your profile to appear in search results
+                        </div>
+
+                        <div class="alert-setting" style="margin-top: 15px;">
+                            <div class="alert-label">
+                                <i class="fas fa-calendar"></i>
+                                <span>Activity Sharing</span>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="setting-description">
+                            Share your sleep patterns and achievements with friends
+                        </div>
+
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label class="form-label">Data Retention</label>
+                            <select class="form-input">
+                                <option>Keep data for 30 days</option>
+                                <option>Keep data for 6 months</option>
+                                <option selected>Keep data for 1 year</option>
+                                <option>Keep data indefinitely</option>
+                            </select>
+                        </div>
+
+                        <a href="#" class="delete-account">
+                            <i class="fas fa-trash-alt"></i> Delete Account Permanently
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="settings-footer">
+            <div class="app-version">
+                DreamWeaver v2.4.1 · © 2025 DreamTech Inc.
+            </div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Support Center</a>
+            </div>
+        </div>
+    </div>
+    <script src="DreamWeaver-setting.js"></script>
+</body>
+</html>

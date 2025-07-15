@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamWeaver - Health Monitoring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="DreamWeaver-health-monitor.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Alert Modal -->
+        <div class="alert-modal" id="alertModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h2>Health Alert!</h2>
+                </div>
+                <div class="modal-body">
+                    <p style="margin-bottom: 15px;">Abnormal patterns detected during sleep.</p>
+
+                    <div class="alert-metric">
+                        <div class="metric-details">
+                            <div class="metric-name">Heart Rate</div>
+                            <div class="metric-status">Critical: Above 120bpm</div>
+                        </div>
+                        <div class="metric-value-large">128 bpm</div>
+                    </div>
+
+                    <div class="alert-metric">
+                        <div class="metric-details">
+                            <div class="metric-name">Breathing Rate</div>
+                            <div class="metric-status">Warning: Below normal</div>
+                        </div>
+                        <div class="metric-value-large">9 bpm</div>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button class="modal-btn btn-primary">
+                            <i class="fas fa-bell"></i> Notify Contact
+                        </button>
+                        <button class="modal-btn btn-secondary" id="dismissAlert">
+                            <i class="fas fa-times"></i> Dismiss
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="logo-text">DreamWeaver</div>
+            </div>
+            <div class="user-avatar">U</div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Health Metrics Section -->
+            <div class="health-metrics">
+                <div class="section-header">
+                    <h2>Current Status</h2>
+                    <div class="status-indicator">
+                        <div class="status-dot status-normal"></div>
+                        <span>Normal</span>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <div class="metric-title">
+                                <div class="metric-icon heart-icon">
+                                    <i class="fas fa-heartbeat"></i>
+                                </div>
+                                <span>Heart Rate</span>
+                            </div>
+                            <div class="metric-value">72 bpm</div>
+                        </div>
+                        <div class="metric-status">Normal (60-100 bpm)</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <div class="metric-title">
+                                <div class="metric-icon breath-icon">
+                                    <i class="fas fa-wind"></i>
+                                </div>
+                                <span>Breathing</span>
+                            </div>
+                            <div class="metric-value">16 rpm</div>
+                        </div>
+                        <div class="metric-status">Normal (12-20 rpm)</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <div class="metric-title">
+                                <div class="metric-icon pulse-icon">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                </div>
+                                <span>Oxygen</span>
+                            </div>
+                            <div class="metric-value">97%</div>
+                        </div>
+                        <div class="metric-status">Normal (95-100%)</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <div class="metric-title">
+                                <div class="metric-icon sleep-icon">
+                                    <i class="fas fa-bed"></i>
+                                </div>
+                                <span>Sleep Quality</span>
+                            </div>
+                            <div class="metric-value">86%</div>
+                        </div>
+                        <div class="metric-status">Good</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-section">
+                <div class="section-header">
+                    <h2>Overnight Trends</h2>
+                    <div class="chart-selector">
+                        <select id="chartSelect">
+                            <option value="heart">Heart Rate</option>
+                            <option value="breath">Breathing</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="chart-container active" id="heartChartContainer">
+                    <canvas id="heartRateChart"></canvas>
+                </div>
+
+                <div class="chart-container" id="breathChartContainer">
+                    <canvas id="breathChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Alert Settings -->
+            <div class="settings-section">
+                <div class="section-header">
+                    <h2>Alert Settings</h2>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <i class="fas fa-bell"></i>
+                        <span>Enable Health Alerts</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Notify Emergency Contact</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <i class="fas fa-volume-up"></i>
+                        <span>Audible Alarms</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <i class="fas fa-vibrate"></i>
+                        <span>Vibration Alerts</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Recent Alerts -->
+            <div class="alerts-section">
+                <div class="section-header">
+                    <h2>Recent Alerts</h2>
+                    <button class="view-all-btn">View All</button>
+                </div>
+
+                <div class="alert-list">
+                    <div class="alert-item critical">
+                        <div class="alert-time">Today 03:28 AM</div>
+                        <div class="alert-details">
+                            <div class="alert-type">Critical: Heart Rate</div>
+                            <div class="alert-value">128 bpm (5 min)</div>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+
+                    <div class="alert-item warning">
+                        <div class="alert-time">Today 02:45 AM</div>
+                        <div class="alert-details">
+                            <div class="alert-type">Warning: Breathing</div>
+                            <div class="alert-value">9 rpm (3 min)</div>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+
+                    <div class="alert-item warning">
+                        <div class="alert-time">Yesterday 04:12 AM</div>
+                        <div class="alert-details">
+                            <div class="alert-type">Warning: Heart Rate</div>
+                            <div class="alert-value">115 bpm (3 min)</div>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="mobile-nav">
+            <a class="nav-item" href="../DreamWeaver-home - mobile/DreamWeaver-home.html">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a class="nav-item" href="../DreamWeaver-journal-mobile/DreamWeaver-mobile-dream-journal.html">
+                <i class="fas fa-book"></i>
+                <span>Journal</span>
+            </a>
+            <a class="nav-item active" href="DreamWeaver-mobile-health-monitor.html">
+                <i class="fas fa-heartbeat"></i>
+                <span>Health</span>
+            </a>
+            <a class="nav-item" href="../DreamWeaver-setting - mobile/DreamWeaver-mobile-setting.html">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="DreamWeaver-health-monitor.js"></script>
+</body>
+</html>
